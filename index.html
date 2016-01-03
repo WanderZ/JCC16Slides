@@ -52,8 +52,10 @@
 				<section>
 					<h2>Agenda</h2>
 					<ul>
-						<li>Hello World</li>
 						<li>Tools, Setup, IDE, Editors</li>
+						<li>Hello World Program</li>
+						<li>Variables</li>
+						<li>Conditions</li>
 						<li>LOL: Lots of Loops</li>
 						<li>Function, Methods</li>
 						<li>Object Oriented Programming</li>
@@ -62,25 +64,36 @@
 					</ul>
 				</section>
 
+				<section>
+					<h2>Tools, Setup, IDE, Editor</h2>
+					<p>
+						Recommended to practice in a UNIX environment, in a VIM editor <span class="fragment highlight-red">#CS1020</span>
+					</p>
+					<p>
+						for <span class="fragment highlight-blue">#CS2020</span>, you may want to consider getting yourself acquainted with Eclipse IDE.
+					</p>
+					<p class="fragment">
+						However, <strong style="color:black;">neither</strong> is the focus for today, attention will be spent on sharing basic JAVA coding
+					</p>
+				</section>
+
 				<!-- Example of nested vertical slides -->
 				<section>
 					<section>
 						<h2>Hello World</h2>
 						<p>Simple Hello World to start.</p>
-						<pre class="fragment">
-<code class="hljs" style="">
+						<pre class="fragment"><code data-trim class="hljs">
 public class HelloWorld {
 	public static void main (String[] args) {
 		System.out.println("Hallo World");
 	}
-}
-</code>
-						</pre>
+}</code></pre>
 						<p>
 					</section>
 					<section>
 						<h2>Compiling</h2>
-						<h2><small>Remember to save your code!</small></h2>
+						<pre><p>Remember to save your code!<code data-trim class="hljs" style="">":wq"</code></p></pre>
+						<pre class="fragment"></pre>
 						<pre class="fragment"><code class="hljs" style="">javac HelloWorld.java</code></pre>
 					</section>
 					<section>
@@ -89,144 +102,349 @@ public class HelloWorld {
 						<br>
 						<p class="fragment">
 							You may want to consider typing 
-							<code class="hljs" style="">ls -lag</code> 
+						</p>
+						<pre class="fragment"><code class="hljs" style="">ls -lag</code></pre>
+						<p class="fragment">
 							to see the created "HelloWorld.class" file
-						</p>						
+						</p>
+						<p class="fragment">
+							You can actually <em>chain</em> both commands together
+						</p>
+						<pre class="fragment"><code class="hljs" style="">javac HelloWorld.java; java HelloWorld</code></pre>						
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Variables</h2>
+						<p>Adding the extra wildcard and adaptability to programs</p>
+						<ol>
+							<li>You need to declare a variable before you can use it.</li>
+							<li>Variable names cannot be one of the reserved keywords</li>
+							<li>They are case-Sensitive</li>
+							<li>Unlimited in length, but can only start with a <span class="fragment highlight-red">alphabet</span>, a '<span class="fragment highlight-red">&#36;</span>' or an '<span class="fragment highlight-red">_</span>'</li>
+							<li>Coding Conventions - lowerCamelCase &amp; CONSTANT_VARIABLES</li>
+						</ol>
+					</section>
+					<section>
+						<h2>Variables - Example</h2>
+						<p>Some common types</p>
+						<pre><code class="java">// Non-exhaustive list of primitive variables
+short smallNumber = 2; // Ranges from -32,768 to 32,767 (inclusive)
+int number = 4; // Ranges from -2<sup>31</sup> to 2<sup>31</sup>-1
+long bigNumber = 8; // Ranges from -2<sup>63</sup> to 2<sup>63</sup>-1
+float smallDecimal = 0.4; // a single-precision 32-bit IEEE 754 floating point
+double bigDecimal = 0.8; // a double-precision 64-bit IEEE 754 floating point
+boolean isAwake = true; // a simple flag that tracks true/false conditions
+char singleChar = 'a' // Ranges from '\u0000' (or 0) to '\uffff' (or 65,535)</code></pre>
+					</section>
+					<section>
+						<h2>Variables - Example</h2>
+						<p>More common types</p>
+						<pre><code class="java">// Non-exhaustive list of non-primitive "variables"
+String name = "Andrew" // An array of characters
+// An array of String objects
+String[] args = {"Andrew", "Juliana", "Terence", "Suan Khai"};
+String[] names = new String[4];
+names[0] = name;</code></pre>
+					</section>
+				</section>
+				<section>
+					<h2>Conditions</h2>
+					<p>Same program, different scenario</p>
+					<pre class="fragment"><code data-trim class="java">
+if (hasAttendedJCC) {
+	System.out.println("Confidence++");
+}
+
+if (hasEatenBreakfast) {
+	if(isHungry) 
+		System.out.println("Breakfast Jio! #dontsaybojio");
+	else if(!isAwake) 
+		System.out.println("Snore");
+	else System.out.println("What's Next?");
+}
+else {
+	if(isHungry) 
+		System.out.println("Breakfast Jio! #dontsaybojio");
+	else if(isAwake) 
+		System.out.println("What's Next?");
+	else System.out.println("Snore");
+}
+					</code></pre>
+				</section>
+				<section>
+					<section>
+						<h2>Loops</h2>
+						<p>
+							Best for repetitive tasks.
+						</p>
+						<pre class="fragment"><code data-trim class="java">
+for(int idx=1; idx&lt;=100; idx++) {
+	System.out.print(idx + " sheeps");
+}
+						</code></pre>
+						<pre class="fragment"><code data-trim class="java">
+int idx = 0;
+while(idx&lt;100) {
+	System.out.print(idx + " sheeps"); idx++;
+}
+						</code></pre>
+						<pre class="fragment"><code data-trim class="java">
+int idx = 1;
+do {
+	System.out.print(idx + " sheeps"); idx++;
+} while(idx&lt;100);
+						</code></pre>
+					</section>
+					<section>
+						<h2>Loops: Enhanced</h2>
+						<p>Enhanced for loop (aka foreach loop)</p>
+						<pre class="fragment"><code data-trim class="java">
+public class HelloWorld {
+	public static void main (String[] args) {
+		// A program to say hello to everyone.
+		for(String person : args) {
+			System.out.println("Hallo " + person);
+		}
+	}
+}</code></pre>
+						<p>Note: only for "Collections"</p>
+					</section>
+					<section>
+						<h2>Loops: Working with Arrays</h2>
+						<pre class="fragment"><code data-trim class="java">
+public class HelloWorld {
+	public static void main (String[] args) {
+		// A program to say hello to everyone.
+		for(int i=0; i&lt;args.length; i++) {
+			System.out.println("Hallo " + args[i]);
+		}
+	}
+}</code></pre>
+						<p class="fragment">.length is a "variable" within the array</p>
+					</section>
+					<section>
+						<h2>Loops: Problems and Errors</h2>
+						<p>Infinite Loops</p>
+						<p>Don't be afraid of them, but be prepared.</p>
+						<pre class="fragment"><code data-trim class="java">// Not all infinite loops will look like this.
+while(true) System.out.print("."); </code></pre>
+						<p class="fragment">Force program termination (command line)</p>
+						<pre class="fragment"><code data-trim class="hljs">Ctrl+C</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>Functions, Methods</h2>
+						<p>A.k.a. Subroutines</p>
+						<p>Main Method - the starting point of every JAVA Program</p>
+						<pre><code data-trim class="java">
+public class HelloWorld {
+	public HelloWorld() {
+		// This is a constructor
+	}
+
+	public static void main(String[] args) {
+		System.out.println("Hello World");
+		sayHello(args);
+	}
+
+	public String toString() {
+		return "Hello World";
+	}
+
+	private void doWantYouWant() {
+		// do what i want. Nothing.
+		return;
+	}
+
+	protected static void sayHello(String[] names) {
+		// A program to say hello to everyone.
+		for(String person : names) {
+			System.out.println("Hallo " + person);
+		}
+	}
+
+	protected static void sayHello() {
+		// A program to say hello to a defined list of people.
+		String[] names = {
+			"Andrew", 
+			"Terence", 
+			"Juliana", 
+			"Suan Khai"
+		};
+		for(String person : names) {
+			System.out.println("Hallo " + person);
+		}
+	}
+}</code></pre>
+
+					</section>
+					<section>
+						<h2>Keywords: static, void, etc</h2>
+						<p class="fragment"><code class="fragment highlight-red">static</code> is a reserved keyword to load the method or variable into the memory once the program starts - the effect is that you can run it immediately once the program starts. <br/><small >(if it starts)</small>
+						</p>
+						<p class="fragment"><code class="fragment highlight-blue">void</code> is to indicate a "no need to return anything" for the "return type" of the method signature.
+						</p>
+						<p class="fragment"><code class="fragment highlight-green">public</code>, <code class="fragment highlight-green">private</code> and <code class="fragment highlight-green">protected</code> indicates the access type of the method or variable. Optional, but absence of it indicates the default "package" access.
+						</p>
+						<p class="fragment"><small>Here's a <a href="http://docs.oracle.com/javase/tutorial/java/nutsandbolts/_keywords.html" target="_blank">whole list</a> of reserved keywords that you cannot use as variables/method names/class names.</small></p>
+					</section>
+					<section>
+						<h2>Basic Java Method Syntax <small>(simple)</small></h2>
+						<p>
+							<span class="fragment highlight-green">&lt;access modifier&gt;</span> <span class="fragment highlight-green">&lt;static&gt;</span> <span class="fragment highlight-red">&lt;return-datatype&gt;</span> <span class="fragment highlight-red">&lt;method name&gt;</span> <span class="fragment highlight-red">(</span><span class="fragment highlight-green">&lt;parameters&gt;</span><span class="fragment highlight-red">)</span> <span class="fragment highlight-red">{</span><span class="fragment highlight-green">code<span class="fragment highlight-red">}</span>
+						</p>
 					</section>
 				</section>
 
 				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slides.com" target="_blank">http://slides.com</a>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
-
-				<section>
-					<h2>Touch Optimized</h2>
-					<p>
-						Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
-					</p>
-				</section>
-
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
-
-						Write content using inline or external Markdown.
-						Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-
-						```
-						<section data-markdown>
-						  ## Markdown support
-
-						  Write content using inline or external Markdown.
-						  Instructions and more info available in the [readme](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
-
-				<section>
-					<section id="fragments">
-						<h2>Fragments</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<p><span class="fragment">... a</span> <span class="fragment">fragmented</span> <span class="fragment">slide.</span></p>
-
+					<section id="oop">
+						<h2>OOP: Object Oriented Programming</h2>
+						<p>
+							<small>Psst. HelloWorld is an object.</small>
+						</p>
+						<pre><code data-trim class="java">
+public class HelloWorld {
+	public HelloWorld() {
+		// This is a constructor
+	}
+	public static void main(String[] args) {
+		HelloWorld objHelloWorld = new HelloWorld();
+	}
+}</code></pre>
 						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
+							Constructor, creating new instance
 						</aside>
 					</section>
 					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's different types of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment current-visible">current-visible</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
+						<h2>OOP: making your own objects 1</h2>
+						<pre><code data-trim class="java">
+public class Box {
+	private int length;
+	private int breadth;
+	private int height;
+	public Box() {} 
+	public Box(int length, int breadth, int height) {
+		this.length 	= length;
+		this.breadth 	= breath;
+		this.height 	= height;
+	}
+	public Box(int length) {
+		this.length 	= length;
+		this.breadth 	= length;
+		this.height 	= length;
+	}
+	public int calculateVolume() {
+		return this.length * this.breadth * this.height;
+	}
+	public int calculateSurfaceArea() {
+		return 	2 * this.length * this.breadth 	+
+			2 * this.length * this.height 	+
+			2 * this.breadth * this.height;	
+	}
+
+	public String toString() {
+		return 	"Length: " + this.length 		+ 
+			"\nBreadth: " + this.breadth 	+
+			"\nHeight: " + this.height;
+	}
+	public boolean equals(Box objBox) {
+		return	objBox.length == this.length &amp;&amp;
+			objBox.breadth == this.breadth &amp;&amp;
+			objBox.height == this.height;
+	}
+	public int getLength() 	{return this.length;}
+	public int getBreadth() {return this.breadth;}
+	public int getHeight() 	{return this.height;}
+}</code></pre>
+					</section>
+					<section>
+						<h2>OOP: making your own objects 2</h2>
+						<pre><code data-trim class="java">
+public class ColouredBox extends Box {
+  private String colour;
+  public ColouredBox() {super();}
+  public ColouredBox(int length, int breadth, int height, String colour) {
+    super(length, breadth, height);
+    this.colour = colour;
+  }
+  public ColouredBox(int length, int breadth, int height, String colour) {
+    super(length, breadth, height);
+    this.colour = colour;
+  }
+  public ColouredBox(Box box, String colour) {
+    super(box.getLength(), box.getBreadth(), box.getHeight());
+    this.colour = colour;
+  }
+
+  public String toString() {
+    return	super.toString() + 
+    	"\nColour: " + this.colour;
+  }
+
+  public boolean equals(ColouredBox cBox) {
+    return 	getLength() == cBox.getLength() &amp;&amp;
+    	getHeight() == cBox.getHeight() &amp;&amp;
+    	getBreadth() == cBox.getBreadth() &amp;&amp;
+    	cBox.colour.equals(this.colour);
+  }
+}</code></pre>
+					</section>
+					<section>
+						<h2>Using your new Objects</h2>
+						<pre><code data-trim class="java">
+public class HelloWorld {
+  public static void main(String[] args) {
+    Box firstBox = new Box(1, 2, 3);
+    System.out.println(firstBox);
+    System.out.println(firstBox.calculateVolume());
+    System.out.println(firstBox.calculateSurfaceArea());
+
+    Box secondBox = new Box(1, 2, 3);
+    System.out.println(secondBox);
+    System.out.println(secondBox.calculateVolume());
+    System.out.println(secondBox.calculateSurfaceArea());
+
+    System.out.println(
+      "'=='? " + (firstBox == secondBox));
+    System.out.println(
+      "equals()? " + firstBox.equals(secondBox));
+
+    Box cube = new Box(3);
+    System.out.println(cube);
+    System.out.println(cube.calculateVolume());
+    System.out.println(cube.calculateSurfaceArea());
+
+    ColouredBox rainbowBox = new ColouredBox(3, 3, 3, "rainbow");
+    ColouredBox rainbowCube = new ColouredBox(cube, "rainbow");
+
+    System.out.println(
+      "'=='?" + 
+      rainbowBox == rainbowCube ? "Y" : "N");
+    System.out.println(
+      "equals()?" + 
+      rainbowBox.equals(rainbowCube) ? "Y" : "N");
+  }
+}</code></pre>
 					</section>
 				</section>
-
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=slide#/transitions">Slide</a> -
-						<a href="?transition=convex#/transitions">Convex</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a>
-					</p>
-				</section>
-
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						reveal.js comes with a few themes built in: <br>
-						<!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/black.css'); return false;">Black (default)</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/white.css'); return false;">White</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/league.css'); return false;">League</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/sky.css'); return false;">Sky</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/beige.css'); return false;">Beige</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/simple.css'); return false;">Simple</a> <br>
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/serif.css'); return false;">Serif</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/blood.css'); return false;">Blood</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/night.css'); return false;">Night</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/moon.css'); return false;">Moon</a> -
-						<a href="#" onclick="document.getElementById('theme').setAttribute('href','css/theme/solarized.css'); return false;">Solarized</a>
-					</p>
-				</section>
-
-				<section>
-					<section data-background="#dddddd">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#dddddd"</code> on a slide to change the background color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="navigate-down">
-							<img width="178" height="238" data-src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code class="hljs">&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/image-placeholder.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Tiled Backgrounds</h2>
-						<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-					<section data-background-video="https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.mp4,https://s3.amazonaws.com/static.slid.es/site/homepage/v1/homepage-video-editor.webm" data-background-color="#000000">
-						<div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; padding: 20px;">
-							<h2>Video Backgrounds</h2>
-							<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background-video="video.mp4,video.webm"&gt;</code></pre>
-						</div>
-					</section>
-					<section data-background="http://i.giphy.com/90F8aUepslB84.gif">
-						<h2>... and GIFs!</h2>
-					</section>
-				</section>
-
 				<section data-transition="slide" data-background="#4d7e65" data-background-transition="zoom">
-					<h2>Background Transitions</h2>
+					<h2><a href="https://docs.oracle.com/javase/7/docs/api/" target="_blank">Java API</a></h2>
 					<p>
-						Different background transitions are available via the backgroundTransition option. This one's called "zoom".
+						Application Programming Interface are code made available to other coders to aid and speed up coding.
 					</p>
-					<pre><code class="hljs">Reveal.configure({ backgroundTransition: 'zoom' })</code></pre>
+					<ul>
+						<li>Scanner</li>
+						<li>String</li>
+						<li>Math</li>
+						<li class="fragment current-visible">Collections</li>
+						<li class="fragment current-visible">List</li>
+						<li class="fragment current-visible">ArrayList</li>
+						<li class="fragment current-visible">Vector</li>
+						<li class="fragment current-visible">LinkedList</li>
+						<li class="fragment current-visible">Stack</li>
+						<li class="fragment current-visible">Queue</li>
 				</section>
 
 				<section data-transition="slide" data-background="#b5533c" data-background-transition="zoom">
@@ -234,7 +452,7 @@ public class HelloWorld {
 					<p>
 						You can override background transitions per-slide.
 					</p>
-					<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></pre>
+					<pre><code class="hljs" style="word-wrap: break-word;">&lt;section data-background-transition="zoom"&gt;</code></code></pre>
 				</section>
 
 				<section>
@@ -407,7 +625,7 @@ Reveal.addEventListener( 'customevent', function() {
 				history: true,
 				center: true,
 
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
 
 				// Optional reveal.js plugins
 				dependencies: [
